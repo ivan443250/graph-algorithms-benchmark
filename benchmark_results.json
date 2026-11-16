@@ -1,0 +1,200 @@
+[
+  {
+    "GraphType": "Dense",
+    "VertexCount": 10,
+    "EdgeCount": 65,
+    "FloydWarshallTimeMs": 0.019500000000000003,
+    "FloydWarshallOps": 962,
+    "BellmanFordSingleTimeMs": 0.010703999999999993,
+    "BellmanFordSingleOps": 183,
+    "BellmanFordAllPairsTimeMs": 0.10457400000000001,
+    "BellmanFordAllPairsOps": 2146
+  },
+  {
+    "GraphType": "Dense",
+    "VertexCount": 20,
+    "EdgeCount": 271,
+    "FloydWarshallTimeMs": 0.05158400000000002,
+    "FloydWarshallOps": 7843,
+    "BellmanFordSingleTimeMs": 0.037542,
+    "BellmanFordSingleOps": 971,
+    "BellmanFordAllPairsTimeMs": 0.7144879999999998,
+    "BellmanFordAllPairsOps": 21198
+  },
+  {
+    "GraphType": "Dense",
+    "VertexCount": 30,
+    "EdgeCount": 618,
+    "FloydWarshallTimeMs": 0.14401200000000006,
+    "FloydWarshallOps": 26644,
+    "BellmanFordSingleTimeMs": 0.037636,
+    "BellmanFordSingleOps": 2276,
+    "BellmanFordAllPairsTimeMs": 1.0035260000000001,
+    "BellmanFordAllPairsOps": 79561
+  },
+  {
+    "GraphType": "Dense",
+    "VertexCount": 50,
+    "EdgeCount": 1726,
+    "FloydWarshallTimeMs": 0.45291500000000007,
+    "FloydWarshallOps": 124070,
+    "BellmanFordSingleTimeMs": 0.024399999999999998,
+    "BellmanFordSingleOps": 6983,
+    "BellmanFordAllPairsTimeMs": 1.3133750000000002,
+    "BellmanFordAllPairsOps": 407352
+  },
+  {
+    "GraphType": "Dense",
+    "VertexCount": 75,
+    "EdgeCount": 3916,
+    "FloydWarshallTimeMs": 1.0672650000000001,
+    "FloydWarshallOps": 419591,
+    "BellmanFordSingleTimeMs": 0.06151000000000001,
+    "BellmanFordSingleOps": 17425,
+    "BellmanFordAllPairsTimeMs": 4.555389999999998,
+    "BellmanFordAllPairsOps": 1468551
+  },
+  {
+    "GraphType": "Dense",
+    "VertexCount": 100,
+    "EdgeCount": 6961,
+    "FloydWarshallTimeMs": 2.37573,
+    "FloydWarshallOps": 996080,
+    "BellmanFordSingleTimeMs": 0.10537,
+    "BellmanFordSingleOps": 29944,
+    "BellmanFordAllPairsTimeMs": 11.150880000000003,
+    "BellmanFordAllPairsOps": 3479968
+  },
+  {
+    "GraphType": "Dense",
+    "VertexCount": 150,
+    "EdgeCount": 15669,
+    "FloydWarshallTimeMs": 7.59792,
+    "FloydWarshallOps": 3363990,
+    "BellmanFordSingleTimeMs": 0.25258,
+    "BellmanFordSingleOps": 70523,
+    "BellmanFordAllPairsTimeMs": 37.474180000000004,
+    "BellmanFordAllPairsOps": 12071506
+  },
+  {
+    "GraphType": "Dense",
+    "VertexCount": 200,
+    "EdgeCount": 27968,
+    "FloydWarshallTimeMs": 17.52632,
+    "FloydWarshallOps": 7984080,
+    "BellmanFordSingleTimeMs": 0.48488,
+    "BellmanFordSingleOps": 139851,
+    "BellmanFordAllPairsTimeMs": 88.93145999999999,
+    "BellmanFordAllPairsOps": 29400630
+  },
+  {
+    "GraphType": "Dense",
+    "VertexCount": 250,
+    "EdgeCount": 43640,
+    "FloydWarshallTimeMs": 30.98904,
+    "FloydWarshallOps": 15597400,
+    "BellmanFordSingleTimeMs": 0.7302,
+    "BellmanFordSingleOps": 226950,
+    "BellmanFordAllPairsTimeMs": 170.37944000000002,
+    "BellmanFordAllPairsOps": 56984023
+  },
+  {
+    "GraphType": "Sparse",
+    "VertexCount": 10,
+    "EdgeCount": 46,
+    "FloydWarshallTimeMs": 0.039083999999999994,
+    "FloydWarshallOps": 908,
+    "BellmanFordSingleTimeMs": 0.0016020000000000001,
+    "BellmanFordSingleOps": 135,
+    "BellmanFordAllPairsTimeMs": 0.010367999999999999,
+    "BellmanFordAllPairsOps": 1531
+  },
+  {
+    "GraphType": "Sparse",
+    "VertexCount": 20,
+    "EdgeCount": 95,
+    "FloydWarshallTimeMs": 0.060293999999999986,
+    "FloydWarshallOps": 6892,
+    "BellmanFordSingleTimeMs": 0.002643999999999999,
+    "BellmanFordSingleOps": 341,
+    "BellmanFordAllPairsTimeMs": 0.040616000000000006,
+    "BellmanFordAllPairsOps": 7788
+  },
+  {
+    "GraphType": "Sparse",
+    "VertexCount": 30,
+    "EdgeCount": 143,
+    "FloydWarshallTimeMs": 0.11149399999999997,
+    "FloydWarshallOps": 22742,
+    "BellmanFordSingleTimeMs": 0.003467999999999999,
+    "BellmanFordSingleOps": 586,
+    "BellmanFordAllPairsTimeMs": 0.090394,
+    "BellmanFordAllPairsOps": 19430
+  },
+  {
+    "GraphType": "Sparse",
+    "VertexCount": 50,
+    "EdgeCount": 241,
+    "FloydWarshallTimeMs": 0.26356,
+    "FloydWarshallOps": 102390,
+    "BellmanFordSingleTimeMs": 0.005965,
+    "BellmanFordSingleOps": 1146,
+    "BellmanFordAllPairsTimeMs": 0.26777,
+    "BellmanFordAllPairsOps": 62520
+  },
+  {
+    "GraphType": "Sparse",
+    "VertexCount": 75,
+    "EdgeCount": 370,
+    "FloydWarshallTimeMs": 0.8120800000000001,
+    "FloydWarshallOps": 349950,
+    "BellmanFordSingleTimeMs": 0.009510000000000001,
+    "BellmanFordSingleOps": 2022,
+    "BellmanFordAllPairsTimeMs": 0.6634300000000002,
+    "BellmanFordAllPairsOps": 158093
+  },
+  {
+    "GraphType": "Sparse",
+    "VertexCount": 100,
+    "EdgeCount": 492,
+    "FloydWarshallTimeMs": 1.7136799999999996,
+    "FloydWarshallOps": 814580,
+    "BellmanFordSingleTimeMs": 0.01268,
+    "BellmanFordSingleOps": 2707,
+    "BellmanFordAllPairsTimeMs": 1.19347,
+    "BellmanFordAllPairsOps": 295354
+  },
+  {
+    "GraphType": "Sparse",
+    "VertexCount": 150,
+    "EdgeCount": 738,
+    "FloydWarshallTimeMs": 5.38797,
+    "FloydWarshallOps": 2752830,
+    "BellmanFordSingleTimeMs": 0.01935,
+    "BellmanFordSingleOps": 4130,
+    "BellmanFordAllPairsTimeMs": 2.94918,
+    "BellmanFordAllPairsOps": 711668
+  },
+  {
+    "GraphType": "Sparse",
+    "VertexCount": 200,
+    "EdgeCount": 991,
+    "FloydWarshallTimeMs": 11.588820000000002,
+    "FloydWarshallOps": 6522000,
+    "BellmanFordSingleTimeMs": 0.02742,
+    "BellmanFordSingleOps": 6141,
+    "BellmanFordAllPairsTimeMs": 5.3162199999999995,
+    "BellmanFordAllPairsOps": 1346375
+  },
+  {
+    "GraphType": "Sparse",
+    "VertexCount": 250,
+    "EdgeCount": 1278,
+    "FloydWarshallTimeMs": 20.32094,
+    "FloydWarshallOps": 12912150,
+    "BellmanFordSingleTimeMs": 0.0378,
+    "BellmanFordSingleOps": 8909,
+    "BellmanFordAllPairsTimeMs": 8.95772,
+    "BellmanFordAllPairsOps": 2278124
+  }
+]

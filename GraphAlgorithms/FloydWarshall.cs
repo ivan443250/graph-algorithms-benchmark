@@ -1,8 +1,5 @@
 namespace GraphAlgorithms;
 
-/// <summary>
-/// Результат выполнения алгоритма Флойда-Уоршелла.
-/// </summary>
 public sealed class FloydWarshallResult
 {
     public required double[,] Distances { get; init; }
@@ -10,9 +7,6 @@ public sealed class FloydWarshallResult
     public required bool HasNegativeCycle { get; init; }
     public required long OperationsCount { get; init; }
 
-    /// <summary>
-    /// Восстановление кратчайшего пути между вершинами u и v.
-    /// </summary>
     public List<int>? ReconstructPath(int u, int v)
     {
         if (NextNodes[u, v] is null)
@@ -31,10 +25,6 @@ public sealed class FloydWarshallResult
     }
 }
 
-/// <summary>
-/// Реализация алгоритма Флойда-Уоршелла для поиска кратчайших путей между всеми парами вершин (APSP).
-/// Вычислительная сложность: O(V^3) по времени, O(V^2) по памяти.
-/// </summary>
 public static class FloydWarshall
 {
     public static FloydWarshallResult Run(int n, IReadOnlyList<Edge> edges)
@@ -43,7 +33,6 @@ public static class FloydWarshall
         var next = new int?[n, n];
         long opCount = 0;
 
-        // Инициализация матриц
         for (int i = 0; i < n; i++)
         {
             for (int j = 0; j < n; j++)
@@ -53,7 +42,6 @@ public static class FloydWarshall
             }
         }
 
-        // Заполнение матрицы расстояний смежными рёбрами
         foreach (var edge in edges)
         {
             if (edge.Weight < dist[edge.From, edge.To])
@@ -63,7 +51,6 @@ public static class FloydWarshall
             }
         }
 
-        // Основной тройной цикл динамического программирования
         for (int k = 0; k < n; k++)
         {
             for (int i = 0; i < n; i++)
@@ -85,7 +72,6 @@ public static class FloydWarshall
             }
         }
 
-        // Проверка наличия отрицательных циклов (отрицательные значения на главной диагонали)
         bool hasNegativeCycle = false;
         for (int i = 0; i < n; i++)
         {

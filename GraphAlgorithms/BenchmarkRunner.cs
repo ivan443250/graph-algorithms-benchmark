@@ -5,7 +5,7 @@ namespace GraphAlgorithms;
 
 public sealed class BenchmarkRecord
 {
-    public required string GraphType { get; init; } // "Dense" or "Sparse"
+    public required string GraphType { get; init; }
     public required int VertexCount { get; init; }
     public required int EdgeCount { get; init; }
     public required double FloydWarshallTimeMs { get; init; }
@@ -21,12 +21,11 @@ public static class BenchmarkRunner
     public static List<BenchmarkRecord> RunBenchmarks()
     {
         Console.WriteLine("=========================================================");
-        Console.WriteLine("   ЗАПУСК ЭКСПЕРИМЕНТАЛЬНОГО СТЕНДА СРАВНЕНИЯ АЛГОРИТМОВ");
-        Console.WriteLine("   Язык: C# 13 / .NET 10.0, Высокоточный таймер Stopwatch");
+        Console.WriteLine("       GRAPH SHORTEST PATH ALGORITHMS BENCHMARK");
+        Console.WriteLine("     C# 13 / .NET 10.0 | High-resolution Stopwatch");
         Console.WriteLine("=========================================================");
 
-        // Фаза прогрева JIT (JIT Warm-up)
-        Console.WriteLine("Фаза прогрева JIT...");
+        Console.WriteLine("Warming up JIT compiler...");
         for (int i = 0; i < 5; i++)
         {
             var warmupEdges = GraphGenerator.GenerateRandomGraph(20, 0.5, seed: 42 + i);
@@ -34,13 +33,12 @@ public static class BenchmarkRunner
             _ = BellmanFord.Run(20, warmupEdges, 0);
             _ = BellmanFord.RunAllPairs(20, warmupEdges);
         }
-        Console.WriteLine("Прогрев завершен.\n");
+        Console.WriteLine("Warm-up completed.\n");
 
         int[] vertexSizes = [10, 20, 30, 50, 75, 100, 150, 200, 250];
         var records = new List<BenchmarkRecord>();
 
-        // 1. Тестирование на плотных графах (p = 0.7)
-        Console.WriteLine("--- Серия 1: Плотные графы (плотность p = 0.70) ---");
+        Console.WriteLine("--- Series 1: Dense graphs (density p = 0.70) ---");
         foreach (int v in vertexSizes)
         {
             int iterations = v switch
@@ -56,8 +54,7 @@ public static class BenchmarkRunner
             PrintRecord(record);
         }
 
-        // 2. Тестирование на разреженных графах (E ~ 4 * V)
-        Console.WriteLine("\n--- Серия 2: Разреженные графы (E ~ 4 * V) ---");
+        Console.WriteLine("\n--- Series 2: Sparse graphs (E ~ 4 * V) ---");
         foreach (int v in vertexSizes)
         {
             int iterations = v switch
@@ -100,7 +97,6 @@ public static class BenchmarkRunner
 
             totalEdges += edges.Count;
 
-            // 1. Измерение Floyd-Warshall
             GC.Collect();
             GC.WaitForPendingFinalizers();
             sw.Restart();
@@ -109,7 +105,6 @@ public static class BenchmarkRunner
             totalFloydMs += sw.Elapsed.TotalMilliseconds;
             totalFloydOps += fwRes.OperationsCount;
 
-            // 2. Измерение Bellman-Ford (Single-Source от вершины 0)
             GC.Collect();
             GC.WaitForPendingFinalizers();
             sw.Restart();
@@ -118,7 +113,6 @@ public static class BenchmarkRunner
             totalBellmanSingleMs += sw.Elapsed.TotalMilliseconds;
             totalBellmanSingleOps += bfRes.OperationsCount;
 
-            // 3. Измерение Bellman-Ford (All-Pairs)
             GC.Collect();
             GC.WaitForPendingFinalizers();
             sw.Restart();
@@ -145,9 +139,9 @@ public static class BenchmarkRunner
     private static void PrintRecord(BenchmarkRecord r)
     {
         Console.WriteLine($"V={r.VertexCount,3} | E={r.EdgeCount,5} | " +
-                          $"Флойд-Уоршелл: {r.FloydWarshallTimeMs,8:F3} мс | " +
-                          $"Беллман-Форд (1 исток): {r.BellmanFordSingleTimeMs,6:F3} мс | " +
-                          $"Беллман-Форд (все пары): {r.BellmanFordAllPairsTimeMs,8:F3} мс");
+                          $"Floyd-Warshall: {r.FloydWarshallTimeMs,8:F3} ms | " +
+                          $"Bellman-Ford (single): {r.BellmanFordSingleTimeMs,6:F3} ms | " +
+                          $"Bellman-Ford (all pairs): {r.BellmanFordAllPairsTimeMs,8:F3} ms");
     }
 
     public static void SaveToJson(List<BenchmarkRecord> records, string filePath)
@@ -155,6 +149,6 @@ public static class BenchmarkRunner
         var options = new JsonSerializerOptions { WriteIndented = true };
         string json = JsonSerializer.Serialize(records, options);
         File.WriteAllText(filePath, json);
-        Console.WriteLine($"\nРезультаты сохранены в: {filePath}");
+        Console.WriteLine($"\nBenchmark results saved to: {filePath}");
     }
 }
