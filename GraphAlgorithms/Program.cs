@@ -2,24 +2,24 @@ using GraphAlgorithms;
 
 Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-Console.WriteLine("=================================================================");
-Console.WriteLine("  COURSEWORK: COMPARATIVE ANALYSIS OF SHORTEST PATH ALGORITHMS");
-Console.WriteLine("  Floyd-Warshall vs Bellman-Ford (C# / .NET 10.0)");
-Console.WriteLine("  Student: Ivan Shavrychev, Group B25-191-2");
-Console.WriteLine("=================================================================\n");
+Console.WriteLine("Shortest Path Algorithms: Floyd-Warshall vs Bellman-Ford");
+Console.WriteLine("C# 13 / .NET 10.0");
+Console.WriteLine();
 
-Console.WriteLine("1. Running verification tests...");
+Console.WriteLine("Running verification tests...");
 RunVerificationTests();
-Console.WriteLine("All verification tests passed successfully!\n");
+Console.WriteLine("Verification tests passed.");
+Console.WriteLine();
 
-Console.WriteLine("2. Running performance benchmark...");
+Console.WriteLine("Running benchmarks...");
 var records = BenchmarkRunner.RunBenchmarks();
 
 string resultsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "..", "benchmark_results.json");
 resultsPath = Path.GetFullPath(resultsPath);
 BenchmarkRunner.SaveToJson(records, resultsPath);
 
-Console.WriteLine("\nBenchmark completed successfully!");
+Console.WriteLine();
+Console.WriteLine("Done.");
 
 static void RunVerificationTests()
 {

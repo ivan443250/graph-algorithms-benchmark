@@ -20,12 +20,7 @@ public static class BenchmarkRunner
 {
     public static List<BenchmarkRecord> RunBenchmarks()
     {
-        Console.WriteLine("=========================================================");
-        Console.WriteLine("       GRAPH SHORTEST PATH ALGORITHMS BENCHMARK");
-        Console.WriteLine("     C# 13 / .NET 10.0 | High-resolution Stopwatch");
-        Console.WriteLine("=========================================================");
-
-        Console.WriteLine("Warming up JIT compiler...");
+        Console.WriteLine("Warming up JIT...");
         for (int i = 0; i < 5; i++)
         {
             var warmupEdges = GraphGenerator.GenerateRandomGraph(20, 0.5, seed: 42 + i);
@@ -33,12 +28,13 @@ public static class BenchmarkRunner
             _ = BellmanFord.Run(20, warmupEdges, 0);
             _ = BellmanFord.RunAllPairs(20, warmupEdges);
         }
-        Console.WriteLine("Warm-up completed.\n");
+        Console.WriteLine("Warm-up done.");
+        Console.WriteLine();
 
         int[] vertexSizes = [10, 20, 30, 50, 75, 100, 150, 200, 250];
         var records = new List<BenchmarkRecord>();
 
-        Console.WriteLine("--- Series 1: Dense graphs (density p = 0.70) ---");
+        Console.WriteLine("Dense graphs (density p = 0.70):");
         foreach (int v in vertexSizes)
         {
             int iterations = v switch
@@ -54,7 +50,8 @@ public static class BenchmarkRunner
             PrintRecord(record);
         }
 
-        Console.WriteLine("\n--- Series 2: Sparse graphs (E ~ 4 * V) ---");
+        Console.WriteLine();
+        Console.WriteLine("Sparse graphs (E ~ 4V):");
         foreach (int v in vertexSizes)
         {
             int iterations = v switch
@@ -138,10 +135,7 @@ public static class BenchmarkRunner
 
     private static void PrintRecord(BenchmarkRecord r)
     {
-        Console.WriteLine($"V={r.VertexCount,3} | E={r.EdgeCount,5} | " +
-                          $"Floyd-Warshall: {r.FloydWarshallTimeMs,8:F3} ms | " +
-                          $"Bellman-Ford (single): {r.BellmanFordSingleTimeMs,6:F3} ms | " +
-                          $"Bellman-Ford (all pairs): {r.BellmanFordAllPairsTimeMs,8:F3} ms");
+        Console.WriteLine($"V: {r.VertexCount}, E: {r.EdgeCount}, Floyd-Warshall: {r.FloydWarshallTimeMs:F3} ms, Bellman-Ford single: {r.BellmanFordSingleTimeMs:F3} ms, Bellman-Ford all pairs: {r.BellmanFordAllPairsTimeMs:F3} ms");
     }
 
     public static void SaveToJson(List<BenchmarkRecord> records, string filePath)
@@ -149,6 +143,7 @@ public static class BenchmarkRunner
         var options = new JsonSerializerOptions { WriteIndented = true };
         string json = JsonSerializer.Serialize(records, options);
         File.WriteAllText(filePath, json);
-        Console.WriteLine($"\nBenchmark results saved to: {filePath}");
+        Console.WriteLine();
+        Console.WriteLine($"Results saved to: {filePath}");
     }
 }
